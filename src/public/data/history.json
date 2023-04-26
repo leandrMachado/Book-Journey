@@ -1,0 +1,64 @@
+[
+    {
+        "id": "1",
+        "text": "Era uma vez um arqueólogo aventureiro chamado Max, que passou anos estudando lendas antigas sobre um templo perdido, construído por uma antiga civilização desaparecida há muito tempo.",
+        "setState": true
+    },
+    {
+        "id": "2",
+        "text": "Max finalmente encontrou o local onde as ruínas do templo foram supostamente deixadas para trás, escondidas em uma densa selva em algum lugar da América Central.",
+        "setState": true
+    },
+    {
+        "id": "3",
+        "text": "Max sabia que a busca pelo templo seria perigosa, mas estava determinado a descobrir seus segredos e tesouros. Ele montou uma expedição com seus colegas mais confiáveis ​​e partiu para a selva.",
+        "setState": true
+    },
+    {
+        "id": "4",
+        "text": "Quando chegaram ao local",
+        "setState": false,
+        "optins": [
+            {
+                "option": "Entrar",
+                "setState": true
+            },
+            {
+                "option": "Vasculhar a area",
+                "recompensa": "key",
+                "setState": true
+            }
+        ]
+    },
+    {
+        "id": "5",
+        "text": "Dentro do templo, Max encontrou pistas sobre a civilização antiga que o construiu, incluindo mapas, artefatos e inscrições.",
+        "setState": true
+    },
+    {
+        "id": "6",
+        "text": "Ele também descobriu que o templo guardava um grande tesouro, que foi escondido pelos antigos habitantes para protegê-lo de invasores.",
+        "setState": false,
+        "optins": [
+            {
+                "option": "continuar",
+                "setState": true
+            },
+            {
+                "option": "vasculhar a area",
+                "recompensa": "key",
+                "setState": true
+            },
+            {
+                "option": "sair",
+                "exit": true
+            }
+        ]
+
+    },
+    {
+        "exi": true,
+        "setState": true
+    }
+    
+]

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+      body {
+        background: #1b1b1b;
+        font-family: 'VT323', monospace;
+        color: #fff;
+      }
+
+      :root {
+        --font-size: 25px;
+      }
+
+      ::selection {
+        background-color: yellow;
+        color: black;
+      }
+
+      p {
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+
+      .bash-command {
+        font-size: var(--font-size);
+      }
+
+      .saida p {
+        font-size: var(--font-size);
+      }
+
+      .cursor {
+        font-size: 16px;
+        background-color: #00FF00;
+        color: #fff;
+        position: relative;
+        animation: blinker 1s linear infinite;
+      }
+        
+      @keyframes blinker {
+        50% {
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+<body>
