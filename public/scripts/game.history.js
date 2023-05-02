@@ -73,3 +73,5 @@ const typing = (phrase) => {
       }, delay);
     });
 };
+
+if (window.innerWidth < 750) typing('This website is not compatible with mobile devices.');
