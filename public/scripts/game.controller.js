@@ -8,7 +8,15 @@ const dontKnowWhatAnswer = [
 ]
 
 const commands = {
-    'go': () => {}
+    'clear': () => clearTerminal(),
+    'cls': () => clearTerminal(),
+}
+
+const clearTerminal = () => {
+    const exit = document.getElementById('bash-exit');
+    while (exit.firstChild) {
+        exit.removeChild(exit.firstChild);
+    }
 }
 
 new KeyPressListener(async (key) => {
@@ -25,12 +33,16 @@ new KeyPressListener(async (key) => {
         }
         case 13: {
             if (command in commands) {
-                commands[command]();
+                if (command === 'cls' || command === 'clear') {
+                    commands[command]();
+                }
+                else {
+                    commands[command]();
+                    const commandExit = document.createElement("p");
+                    commandExit.innerHTML = command;
+                    document.getElementById("bash-exit").appendChild(commandExit);
+                }
                 
-                const commandExit = document.createElement("p");
-                commandExit.innerHTML = command;
-                document.getElementById("bash-exit").appendChild(commandExit);
-
                 command = '';
                 document.getElementById('bash').innerHTML = command;
             }
@@ -73,5 +85,15 @@ const typing = (phrase) => {
       }, delay);
     });
 };
+
+const initializeText = [    'Initializing...',    'Started, status OK.'];
+
+const initializeApp = async () => {
+    for (const tst of initializeText) {
+        await typing(tst);
+    }
+}
+
+initializeApp();
 
 if (window.innerWidth < 750) typing('This website is not compatible with mobile devices...');
