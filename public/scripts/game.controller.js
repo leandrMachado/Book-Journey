@@ -4,8 +4,7 @@ let achievements = [];
 
 const dontKnowWhatAnswer = [
     "Hmm.... I don't understand.",
-    "Can you answer again I don't understand!",
-    "fode-te"
+    "Can you answer again I don't understand!"
 ]
 
 const commands = {
