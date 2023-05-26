@@ -8,6 +8,7 @@ body {
 
 :root {
     --font-size: 20px;
+    --chapter-font: 28px;
 }
 
 ::selection {
@@ -20,8 +21,15 @@ p {
     margin-bottom: 0px;
 }
 
+.chapter {
+    font-size: var(--chapter-font) !important;
+    margin-bottom: 6px;
+    margin-top: 6px;
+}
+
 .bash-command {
     font-size: var(--font-size);
+    margin-top: 6px;
 }
 
 .saida p {
