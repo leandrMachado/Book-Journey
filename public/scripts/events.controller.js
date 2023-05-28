@@ -1,42 +1,42 @@
-const source = new Audio("/assets/source.wav");
 const typing = (phrase, chapter = false) => {
-    const delay = 50;
-    let charIndex = 0;
-    source.volume = .1
-    source.play();
-  
-    return new Promise((resolve) => {
-      const commandExit = document.createElement("p");
+  const source = new Audio("/assets/source.wav");
+  const delay = 50;
+  let charIndex = 0;
+  source.volume = 0.1;
+  source.play();
 
-      if (chapter) 
-        commandExit.classList.add("chapter")
+  return new Promise((resolve) => {
+    const commandExit = document.createElement("p");
 
-      document.getElementById("bash-exit").appendChild(commandExit);
-  
-      const typingDelay = setInterval(() => {
-        commandExit.innerHTML += phrase[charIndex];
-        charIndex++;
-  
-        if (charIndex >= phrase.length) {
-          clearInterval(typingDelay);
-          resolve();
-        }
-      }, delay);
+    if (chapter) commandExit.classList.add("chapter");
 
-      window.onkeydown = (event) => {
-        if (event.which == 32)
-          clearInterval(typingDelay);
-          commandExit.innerHTML = "";
-          commandExit.innerHTML = phrase;
-          resolve();
+    document.getElementById("bash-exit").appendChild(commandExit);
+
+    const typingDelay = setInterval(() => {
+      commandExit.innerHTML += phrase[charIndex];
+      charIndex++;
+
+      if (charIndex >= phrase.length) {
+        clearInterval(typingDelay);
+        resolve();
+      }
+    }, delay);
+
+    new KeyPressListener(async (key) => {
+      if (key === 32) {
+        clearInterval(typingDelay);
+        commandExit.innerHTML = "";
+        commandExit.innerHTML = phrase;
+        resolve();
       }
     });
-    
+  });
 };
 
 const inventoryLoad = async () => {
-    if (inventory.length === 0)
-        await typing("Nao existem items no inventario");
-    else 
-        await typing("Inventory: " + JSON.stringify(inventory).replace(/["']/g, ''));
-}
+  if (inventory.length === 0) await typing("Nao existem items no inventario");
+  else
+    await typing(
+      "Inventory: " + JSON.stringify(inventory).replace(/["']/g, "")
+    );
+};

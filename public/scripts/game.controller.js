@@ -20,16 +20,31 @@ const readChapter = async () => {
     const history = await historyRead();
     console.log(chapter)
 
-    for (let index = chapter; index < history.length; index++) {
+    for (let index = indexLine; index < history.length; index++) {
 
-        if (history[index] === `Capítulo - ${chapter+1}`)
-            await typing(history[index], true);
-        else if (history[index] === "move()") {
+        if (history[index] === `Capítulo - ${chapter+1}`) {
             chapter++;
+            indexLine++
+            await typing(history[index], true);
+        }
+        else if (history[index] === "move()") {
+
+            console.log('ananas move')
+            break;
+        }
+        else if (history[index] === "look()") {
+
+            console.log('ananas look')
+            break;
+        }
+        else if (history[index] === "examine()"){
+
+            console.log('ananas examine')
             break;
         }
         else 
-            await typing(history[index]);
+        await typing(history[index]);
+            indexLine++
     }
 }
 
