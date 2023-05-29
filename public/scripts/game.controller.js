@@ -1,6 +1,7 @@
 const input = document.querySelector("input");
 let inventory = ["mapa"];
 let line = 0;
+let chapter = 1;
 
 const commands = {
   move: () => readHistory(),
@@ -19,15 +20,16 @@ const readHistory = async () => {
   const history = await historyRead();
   
   for (let i = line; i <= history.length; i++) {
-    if (history[i] === "Capítulo - 1")
+    if (history[i] === `Capítulo - ${chapter}`)
      await typing(history[i], true)
     else if (history[i] === "move()") {
+      chapter++
       line++
       break
     }
     else {
       line++
-      await typing(history[i])
+      await typing("→ " + history[i])
     }
 
   }
