@@ -17,8 +17,8 @@ const commands = {
 const readHistory = () => {};
 
 document.addEventListener("keydown", async (e) => {
-  if (e.key === "Enter" || e.keyCode === 13 && input.value) {
-    if (input.value in commands) commands[input.value]();
+  if (e.keyCode === 13 && input.value) {
+    if (input.value.toLowerCase() in commands) commands[input.value.toLowerCase()]();
     else
       await typing(
         `→ Command not found: ${input.value}. Type help for a list of supported commands`

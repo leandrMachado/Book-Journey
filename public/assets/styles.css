@@ -65,7 +65,7 @@ input {
 
 @media screen and (max-width: 750px) {
   .terminal > p {
-    margin-top: 30px;
+    margin-top: 3px;
     font-size: var(--font-size-mobile);
   }
 
