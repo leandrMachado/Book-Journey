@@ -10,7 +10,7 @@ const typing = (phrase, chapter = false) => {
 
     if (chapter) commandExit.classList.add("chapter");
 
-    document.getElementById("bash-exit").appendChild(commandExit);
+    document.querySelector(".terminal").appendChild(commandExit);
 
     const typingDelay = setInterval(() => {
       commandExit.innerHTML += phrase[charIndex];
@@ -22,8 +22,8 @@ const typing = (phrase, chapter = false) => {
       }
     }, delay);
 
-    new KeyPressListener(async (key) => {
-      if (key === 32) {
+    document.addEventListener("keydown", function (e) {
+      if (e.keyCode === 32) {
         clearInterval(typingDelay);
         commandExit.innerHTML = "";
         commandExit.innerHTML = phrase;
@@ -37,6 +37,6 @@ const inventoryLoad = async () => {
   if (inventory.length === 0) await typing("Nao existem items no inventario");
   else
     await typing(
-      "Inventory: " + JSON.stringify(inventory).replace(/["']/g, "")
+      "→ Inventory: " + JSON.stringify(inventory).replace(/["']/g, "")
     );
 };

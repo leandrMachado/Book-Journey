@@ -1,16 +1,28 @@
-let command = "";
+const input = document.querySelector("input");
 let inventory = ["mapa"];
-let chapterIndex = 2; // init 0
-let historyIndex = 0;
 
 const commands = {
-  move: () => readChapter(),
-  look: () => {},
+  move: () => readHistory(),
+  look: () => readHistory(),
   examine: () => {},
   inventory: () => inventoryLoad(),
   help: async () => {
     await typing(
-      "Commands: " + JSON.stringify(Object.keys(commands)).replace(/["']/g, "")
+      "→ Commands: " +
+        JSON.stringify(Object.keys(commands)).replace(/["']/g, "")
     );
   },
 };
+
+const readHistory = () => {};
+
+document.addEventListener("keydown", async (e) => {
+  if (e.keyCode === 13 && input.value) {
+    if (input.value in commands) commands[input.value]();
+    else
+      await typing(
+        `→ Command not found: ${input.value}. Type help for a list of supported commands`
+      );
+    input.value = "";
+  }
+});
