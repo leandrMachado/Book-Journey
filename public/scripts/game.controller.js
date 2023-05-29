@@ -17,7 +17,7 @@ const commands = {
 const readHistory = () => {};
 
 document.addEventListener("keydown", async (e) => {
-  if (e.keyCode === 13 && input.value) {
+  if (e.key === "Enter" || e.keyCode === 13 && input.value) {
     if (input.value in commands) commands[input.value]();
     else
       await typing(
