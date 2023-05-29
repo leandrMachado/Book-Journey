@@ -1,6 +1,6 @@
 const typing = (phrase, chapter = false) => {
   const source = new Audio("/assets/source.wav");
-  const delay = 50;
+  const delay = 30;
   let charIndex = 0;
   source.volume = 0.1;
   source.play();

@@ -1,5 +1,6 @@
 const input = document.querySelector("input");
 let inventory = ["mapa"];
+let line = 0;
 
 const commands = {
   move: () => readHistory(),
@@ -14,7 +15,23 @@ const commands = {
   },
 };
 
-const readHistory = () => {};
+const readHistory = async () => {
+  const history = await historyRead();
+  
+  for (let i = line; i <= history.length; i++) {
+    if (history[i] === "Capítulo - 1")
+     await typing(history[i], true)
+    else if (history[i] === "move()") {
+      line++
+      break
+    }
+    else {
+      line++
+      await typing(history[i])
+    }
+
+  }
+};
 
 document.addEventListener("keydown", async (e) => {
   if (e.keyCode === 13 && input.value) {

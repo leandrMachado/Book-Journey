@@ -37,6 +37,10 @@ body {
   font-weight: bold;
 }
 
+.chapter {
+  font-size: var(--chapter-font) !important;
+}
+
 .bash-command {
   font-size: var(--font-size);
   margin-top: 3px;
