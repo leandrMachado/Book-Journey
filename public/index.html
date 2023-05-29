@@ -4,21 +4,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eldoria - History</title>
+    <title>guest@ali: ~</title>
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
-    <section class="saida" id="bash-exit"></section>
-    <div>
-      <div class="bash-command">
-        <span style="margin-right: 2px">></span> <span id="bash"></span
-        ><b class="cursor"> █</b>
-      </div>
+    <section class="terminal" id="bash-exit">
+      <p>Welcome to Eldoria — Type <span>move</span> for initiate game <span>help</span> for a list of supported commands.</p>
+    </section>
+
+    <div class="bash-command" id="bash-command">
+      <label for="command">&rarr; <label>
+      <input id="command" type="text" autoComplete="off" autofocus/>
     </div>
 
-    <script src="/scripts/key.listener.js"></script>
-    <script src="/scripts/events.controller.js"></script>
-    <script src="/scripts/history.load.js"></script>
     <script src="/scripts/game.controller.js"></script>
   </body>
 </html>
