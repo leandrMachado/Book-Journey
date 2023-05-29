@@ -11,7 +11,7 @@ body {
 :root {
     --font-size: 15px;
     --chapter-font: 21px;
-    --font-size-mobile: 17px;
+    --font-size-mobile: 16px;
 }
 
 ::selection {
