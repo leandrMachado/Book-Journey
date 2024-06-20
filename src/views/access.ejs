@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guest@silmi: ~</title>
+  <link rel="icon" href="/assets/flask_big_blue.png" type="image/x-icon" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+
+<body>
+  <section class="terminal"></section>
+
+  <div class="bash-command" id="bash-command">
+    <label for="command">→</label>
+    <input id="command" type="text" autoComplete="off" autofocus />
+  </div>
+
+  <script src="/scripts/events.controller.js"></script>
+  <script>
+    (async () => {
+      await typing_('Welcome to Eldoria', true);
+      await typing_('Type <span>login</span> to create an account and save your game');
+    })();
+
+    
+
+    const input = document.querySelector("input");
+    const commands = {
+      login: () => {
+        window.open(
+          '/authenticated/google',
+          'Google Authentication',
+          'width=500,height=600,left=100,top=100'
+        )
+      }
+    };
+
+    document.addEventListener("keydown", async (e) => {
+      if (e.keyCode === 13 && input.value) {
+        if (input.value.toLowerCase() in commands) commands[input.value.toLowerCase()]();
+        else
+          await typing(
+            `→ Command not found: ${input.value}`
+          );
+        input.value = "";
+      }
+    });
+  </script>
+</body>
+
+</html>
