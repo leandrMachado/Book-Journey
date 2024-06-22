@@ -1,0 +1,32 @@
+[
+    {
+        "1": {
+            "paragraphs": [
+                "You've been almost too nervous to look out the plane window at the African countryside be-low. The smiling stewardess leaning over to check your seat belt jolts you back to reality",
+                "'We're approaching the airport in Nairobinow.'",
+                "You look out the window. Now you can see the large, modern city below. The gently rolling ter-rain is unlike the Arizona ranch country where you grew up. You remember the cable that brought you here: 'Congratulations. You have been selected to compete in a series of AfricanRoad Rallies designed to test both the skill of the drivers and the ruggedness of the cars.' You weren't sure you could handle a race like this, but your dad pooh-poohed that idea."
+            ],
+            "options": [
+                {
+                    "text": "Go on to the next page.",
+                    "page": 2
+                }
+            ]
+        },
+        "2": {
+            "paragraphs": [
+                "'Of course you can do it. I taught you every-thing I know.'",
+                "And he knows a lot. He and his brother were competition drivers, racing for the Italian Ferrariand Lancia teams during the heyday of the LeMans, the Mille Miglia, and the Nurburgring races. As soon as you could see over the steering wheel of a jeep, your father began teaching you about cars and driving. The hours you spent in jeeps out on the range and in fast cars on the track your dad laid out behind the barn have paid off.",
+                "You wish your dad were here with you, but hecouldn't come. Some last-minute business forcedhim to cancel his plane reservation.",
+                "At the competition headquarters a large ban-ner proclaiming the First African Dual Road RaceRally flaps slowly in a light breeze. People stand-ing in clumps around a long table are talking excitedly. They are the drivers and navigators, the mechanics, and the representatives of the com-panies sponsoring this race.",
+                "You sign in at the competition desk. 'Welcome.Here's your copy of the rules and regulations. I'mMichael Reupleau, race chairman.' He smiles atyou, shakes your hand, and gives you a large bright blue folder that says Race Kit on the cover.You feel nervous. The other drivers look much older than you and seem very sure of themselves."
+            ],
+            "options": [
+                {
+                    "text": "Go on to the next page.",
+                    "page": 3
+                }
+            ]
+        }
+    }
+]

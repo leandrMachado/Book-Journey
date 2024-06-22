@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+body {
+  background: #191919;
+  font-family: "Pixelify Sans", sans-serif;
+  color: #9b9b9b;
+  overflow-x: hide;
+  overflow-y: auto;
+}
+
+:root {
+  --font-size: 18px;
+  --chapter-font: 30px;
+  --font-size-span: 15px;
+  --color: #888;
+  --red: #ff8e8b;
+  --green: #4baf61;
+}
+
+::selection {
+  background-color: #e4e4e4;
+  color: black;
+}
+
+.terminal:first-child {
+  margin-top: 20px;
+}
+
+.terminal > p {
+  padding-left: 5px;
+  font-size: var(--font-size);
+  padding-top: 3px;
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+.terminal > p > span {
+  color: var(--red);
+}
+
+.chapter {
+  font-size: var(--chapter-font) !important;
+  color: var(--green)  !important;
+}
+
+.bash-command {
+  font-size: var(--font-size);
+  display: flex;
+}
+
+.bash-command > p {
+  margin: 10px 5px;
+  cursor: pointer;
+}
+
+.bash-command > p:hover {
+  color: #d6d6d6;
+}
+
+.bash-command p > span {
+  font-size: var(--font-size-span);
+}
+
+input {
+  width: 70%;
+  background: none;
+  outline: none;
+  border: none;
+  font-size: var(--font-size);
+  padding-top: 3px;
+  padding-bottom: 2px;
+  caret-color: transparent;
+  color: var(--color);
+  font-family: "Pixelify Sans", sans-serif;
+}
+
+.user-options ul {
+  display: flex;
+  padding: 0;
+}
+
+.user-options ul li {
+  list-style: none;
+  padding: 0px 10px;
+}
+
+@media screen and (max-width: 750px) {
+  .terminal > p {
+    margin-top: 3px;
+  }
+}

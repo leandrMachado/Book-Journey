@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guest@silmi: ~</title>
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="icon" href="/assets/flask_big_blue.png" type="image/x-icon" />
+</head>
+
+<body>
+  <section class="terminal"></section>
+  <br>
+  <div class="bash-command"></div>
+
+  <script src="/scripts/events.controller.js"></script>
+  <script>
+    (
+      async () => {
+        await typing_(
+          'Eldoria´s History',
+          true
+        );
+
+        await typing_(
+          'Click <span>login</span> to create an account and save your game'
+        );
+
+        typingOptions_(
+          'Login',
+          () => {
+            window.location.href = "/auths/google"
+          }
+        )
+
+      }
+    )();
+  </script>
+</body>
+
+</html>

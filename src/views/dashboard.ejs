@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@<%=username%> ~</title>
+    <link rel="icon" href="/assets/flask_big_blue.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <section class="terminal"></section>
+    <br>
+    <div class="bash-command" style="flex-direction: column;"></div>
+
+    <script src="/scripts/events.controller.js"></script>
+    <% if (hasSaveGame) { %>
+      <script>
+        (
+          async () => {
+            typingOptions_(
+              'Continue: <span>Resume your adventure from where you left off.</span>',
+              () => {
+                window.location.href = "/auths/google"
+              }
+            );
+          }
+        )();
+      </script>
+    <% } %>
+    <script>
+      (
+        async () => {
+          await typing_(
+            'Eldoria´s History',
+            true
+          );
+
+          await typing_(
+            `Get ready for an unforgettable adventure <span><%=username%></span>! Choose how you want to start:`
+          );
+
+          typingOptions_(
+            'New Game: <span>Start a new journey full of challenges.</span>',
+            () => {
+              window.location.href = "/auths/google"
+            }
+          );
+
+          typingOptions_(
+            'Exit: <span>Return when you`re ready to continue.</span>',
+            () => {
+              window.location.href = "/auths/google/logout"
+            }
+          );
+
+        }
+      )();
+  </script>
+
+  </body>
+</html>
