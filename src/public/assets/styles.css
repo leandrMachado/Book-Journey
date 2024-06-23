@@ -36,9 +36,19 @@ body {
 }
 
 .back_home {
+  width: 100px;
   text-decoration: none;
   font-size: var(--font-size);
   color: var(--color);
+  padding: 10px;
+  padding-left: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard { 
+  width: 15px; 
   padding-left: 5px;
 }
 

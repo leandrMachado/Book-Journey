@@ -9,6 +9,15 @@ router.get("/", (req, res, next) => {
     res.status(200).render('access')
 });
 
+router.get('/dashboard/user', (req, res, next) => {
+    if (!req.isAuthenticated()) 
+        return res.status(200).redirect("/pages/dashboard");
+
+    new User().get({ email_: req.user.email }).then(user => {
+        res.status(200).render('user', { username: user.username, email: user.email })
+    });
+})
+
 router.get('/dashboard', (req, res, next) => {
     if (!req.isAuthenticated()) 
         return res.status(401).redirect('/pages');
@@ -29,8 +38,6 @@ router.get('/dashboard', (req, res, next) => {
             res.status(200).render('dashboard', { username: req.user.username, hasSaveGame: false, historys })
         })
     })
-
-    
 });
 
 router.get('/playground/:history', (req, res, next) => {
@@ -42,7 +49,7 @@ router.get('/playground/:history', (req, res, next) => {
         const progress_index = user_progress.findIndex(book => book.name === req.params.history);
 
         res.status(200).render('playground', { 
-            username: 'username', 
+            username: req.user.username, 
             history: req.params.history,
             page: (progress_index !== -1) ? user_progress[progress_index].page : "1"
         });

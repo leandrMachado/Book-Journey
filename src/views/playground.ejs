@@ -12,8 +12,6 @@
 
 <body>
     <a href="/pages/dashboard" class="back_home">Back home</a>
-    <br>
-    <br>
     <section class="terminal"></section>
     <br>
     <div class="bash-command" style="flex-direction: column;"></div>
@@ -24,7 +22,7 @@
         const history = "<%=history%>";
 
         const handleHistory = async (index) => {
-            const data = await historyController.history_() || [];
+            const data = window.history_;
             
             if (Object.keys(data).length === index -1) {
                 await resetHistory_(history).then(async status => {
@@ -63,6 +61,7 @@
 
         (
             async () => {
+                window.history_ = await historyController.history_() || [];
                 handleHistory("<%=page%>");
             }
         )();

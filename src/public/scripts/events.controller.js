@@ -31,7 +31,7 @@ const typingOptions_ = (option, exc) => {
 };
 
 const clearTyping = () => {
-  document.querySelector('.bash-command').innerHTML = ""
+  document.querySelector('.terminal').innerHTML = ""
   document.querySelector('.bash-command').innerHTML = "";
 };
 
