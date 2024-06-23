@@ -2,6 +2,9 @@ require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const app = express();
+const session = require('express-session');
+const pgSession = require('connect-pg-simple')(session);
+const knexfile = require('../knexfile');
 
 app.use(require("body-parser").json());
 
@@ -12,11 +15,23 @@ app.use(
   })
 );
 
+const sessionPoll = require('pg').Pool;
+
+const sessionDBaccess = new sessionPoll(
+    knexfile.test.connection
+)
+
 app.use(
-    require('express-session')({
+    session({
+        store: new pgSession({
+            pool: sessionDBaccess, 
+            tableName: 'session'
+        }),
+        name: 'SID',
         secret: process.env.SECRET,
         resave: false,
         saveUninitialized: true,
+        cookie: { maxAge: 24 * 60 * 60 * 1000 }
     })
 )
 
