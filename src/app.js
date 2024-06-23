@@ -29,10 +29,15 @@ app.use(
 );
 
 const sessionPoll = require('pg').Pool;
+var sessionDBaccess;
 
-const sessionDBaccess = new sessionPoll(
-    knexfile.test.connection
-)
+if (process.env.DB_ENVIRONMENT === 'prod') {
+  sessionDBaccess = new sessionPoll({
+    connectionString: knexfile[process.env.DB_ENVIRONMENT].connection
+  })
+}
+else
+  sessionDBaccess = new sessionPoll(knexfile[process.env.DB_ENVIRONMENT].connection)
 
 app.use(
     session({
