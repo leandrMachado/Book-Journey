@@ -24,7 +24,7 @@ router.get('/dashboard', (req, res, next) => {
 
     new User().get({ email_: req.user.email }).then(user => {
         const user_progress = [ ...user.user_progress ].map(progress_ => JSON.parse(progress_));
-
+        
         Historys.listHistorys((err, historys) => {
             if (err) next(err);
             
@@ -32,7 +32,11 @@ router.get('/dashboard', (req, res, next) => {
 
             for (const index in historys_) {
                 const progress_index = user_progress.findIndex(book => book.name === historys_[index].slug);
-                historys_[index].continue = (user_progress[progress_index].page != 1) ? true : false
+
+                if (user_progress.length != 0)
+                    historys_[index].continue = (user_progress[progress_index].page != 1) ? true : false
+                else
+                    historys_[index].continue = false;
             }
         
             res.status(200).render('dashboard', { username: req.user.username, hasSaveGame: false, historys })
