@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@<%=username%> ~</title>
+    <link rel="icon" href="/assets/flask_big_blue.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+
+<body>
+    <a href="/pages/dashboard" class="back_home">Back home</a>
+    <br>
+    <br>
+    <section class="terminal"></section>
+    <br>
+    <div class="bash-command" style="flex-direction: column;"></div>
+
+    <script src="/scripts/events.controller.js"></script>
+    <script src="/scripts/history.controller.js?history=<%=history%>"></script>
+    <script>
+        const history = "<%=history%>";
+
+        const handleHistory = async (index) => {
+            const data = await historyController.history_() || [];
+            
+            if (Object.keys(data).length === index -1) {
+                await resetHistory_(history).then(async status => {
+                    console.log('Reset user story')
+                    window.location.href = "/pages/dashboard"; 
+                })
+                .catch(err => console.error(err))
+            }
+
+            if (data[index].paragraphs) {
+                for (const text in data[index].paragraphs) {
+                    await typing_(
+                        data[index].paragraphs[text]
+                    );
+                }
+            }
+
+            if (data[index].options) {
+                for (const option in data[index].options) {
+                    typingOptions_(
+                        data[index].options[option].text,
+                        async () => {
+                            await historyController.saveHistory_(data[index].options[option].page)
+                                .then(async status => {
+                                    await clearTyping();
+                                    await handleHistory(
+                                        data[index].options[option].page
+                                    )
+                                })
+                                .catch(err => console.error(err))
+                        }
+                    )
+                }
+            }
+        }
+
+        (
+            async () => {
+                handleHistory("<%=page%>");
+            }
+        )();
+    </script>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 const typing_ = (phrase, chapter = false) => {
-  const delay = 100;
+  const delay = 110;
   let charIndex = 0;
 
   return new Promise(async (resolve, reject) => {
@@ -18,5 +18,34 @@ const typing_ = (phrase, chapter = false) => {
         resolve();
       }
     }, delay);
+  })
+};
+
+const typingOptions_ = (option, exc) => {
+  const optionExit = document.createElement('p')
+
+  document.querySelector('.bash-command').appendChild(optionExit);
+
+  optionExit.onclick = exc;
+  optionExit.innerHTML = option;
+};
+
+const clearTyping = () => {
+  document.querySelector('.bash-command').innerHTML = ""
+  document.querySelector('.bash-command').innerHTML = "";
+};
+
+const resetHistory_ = (history) => {
+  return new Promise(async (resolve, reject) => {
+      await fetch('/utilitys/users/reset-progress', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ name: history })
+      })
+      .then(response => { response.json() })
+      .then(result => { resolve(result) })
+      .catch(error => reject(error));
   })
 };

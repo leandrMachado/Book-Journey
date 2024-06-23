@@ -1,25 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&display=swap');
 
 body {
   background: #191919;
-  font-family: "Pixelify Sans", sans-serif;
-  color: #9b9b9b;
+  font-family: "Lekton", monospace;
+  color: var(--color);
   overflow-x: hide;
   overflow-y: auto;
 }
 
 :root {
-  --font-size: 17px;
+  --font-size: 18px;
   --chapter-font: 30px;
-  --font-size-mobile: 16px;
-  --color: #888;
+  --font-size-span: 15px;
+  --color: #9b9b9b;
   --red: #ff8e8b;
-  --green: #4baf61;
+  --green: #cbb070;
 }
 
 ::selection {
   background-color: #e4e4e4;
   color: black;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #3f3f3f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #202020;
+}
+
+.back_home {
+  text-decoration: none;
+  font-size: var(--font-size);
+  color: var(--color);
+  padding-left: 5px;
+}
+
+.back_home:hover {
+  color: #d6d6d6;
 }
 
 .terminal:first-child {
@@ -45,12 +69,20 @@ body {
 
 .bash-command {
   font-size: var(--font-size);
-  padding-left: 20px;
+  display: flex;
 }
 
-.bash-command > span {
+.bash-command > p {
+  margin: 10px 5px;
   cursor: pointer;
-  padding: 5px 10px;
+}
+
+.bash-command > p:hover {
+  color: #d6d6d6;
+}
+
+.bash-command p > span {
+  font-size: var(--font-size-span);
 }
 
 input {
@@ -79,14 +111,5 @@ input {
 @media screen and (max-width: 750px) {
   .terminal > p {
     margin-top: 3px;
-    font-size: var(--font-size-mobile);
-  }
-
-  input {
-    font-size: var(--font-size-mobile);
-  }
-
-  .bash-command > label {
-    font-size: var(--font-size-mobile);
   }
 }

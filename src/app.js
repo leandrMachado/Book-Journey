@@ -26,11 +26,11 @@ app.use(express.static(path.join(__dirname, './public')))
 
 app.use('/auths', require('./routes/auths.route')(app));
 app.use('/pages', require('./routes/pages.route'));
+app.use('/utilitys/users', require('./routes/users.route'));
 
 app.get('/', (req, res, next) => {
     res.status(200).redirect('/pages');
 })
-
 
 app.use((req, res, next) => {
     const err = {};
@@ -41,6 +41,8 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
     const { name, message, stack } = err;
+    console.log(err);
+
     if (err.status === 404) res.status(404).json(message);
 });
 

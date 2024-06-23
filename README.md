@@ -1,3 +1,1 @@
-# Eldoria - History
-
-Original source code, written in Portugal.
+# choose-your-own-adventure

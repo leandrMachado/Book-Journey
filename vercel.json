@@ -2,15 +2,15 @@
   "version": 2,
   "name": "static-server",
   "builds": [
-    { 
-      "src": "/src/server.js", 
-      "use": "@vercel/node" 
+    {
+      "src": "/src/server.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
-    { 
-      "src": "/(.*)", 
-      "dest": "/src/server.js" 
+    {
+      "src": "/(.*)",
+      "dest": "/src/server.js"
     }
   ]
 }
