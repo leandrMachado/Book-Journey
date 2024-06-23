@@ -6,7 +6,9 @@
   "scripts": {
     "start": "nodemon ./src/server.js",
     "rollback:dev": "npx knex migrate:rollback --env test",
-    "latest:dev": "npx knex migrate:latest --env test"
+    "latest:dev": "npx knex migrate:latest --env test",
+    "latest": "npx knex migrate:latest --env prod",
+    "rollback": "npx knex migrate:rollback --env prod"
   },
   "keywords": [],
   "author": "",

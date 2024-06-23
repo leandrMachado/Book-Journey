@@ -6,6 +6,19 @@ const session = require('express-session');
 const pgSession = require('connect-pg-simple')(session);
 const knexfile = require('../knexfile');
 
+app.db = require('knex')(knexfile[process.env.DB_ENVIRONMENT]);
+
+app.db
+  .raw("SELECT VERSION()")
+  .then(() =>
+    console.log(
+        "[server] Connection to the database has been established successfully"
+    )
+  )
+  .catch((err) => console.error("Unable to connect to the database:", err));
+
+
+
 app.use(require("body-parser").json());
 
 app.use(

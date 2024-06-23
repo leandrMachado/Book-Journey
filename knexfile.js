@@ -21,6 +21,22 @@ module.exports = {
       min: 0,
       max: 50,
       propagateCreateError: false,
-    },
+    }
   },
+  prod: {
+    client: "pg",
+    connection: process.env.POSTGRES_URL,
+    debug: false,
+    migrations: {
+      directory: "src/migrations",
+    },
+    seeds: {
+      directory: "src/seeds",
+    },
+    pool: {
+      min: 0,
+      max: 50,
+      propagateCreateError: false,
+    }
+  }
 };
