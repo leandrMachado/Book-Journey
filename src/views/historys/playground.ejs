@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <a href="/pages/dashboard" class="back_home">Back home</a>
+    <a href="/pages/dashboard/historys" class="back_home">Back</a>
     <section class="terminal"></section>
     <br>
     <div class="bash-command" style="flex-direction: column;"></div>
@@ -59,9 +59,20 @@
             }
         }
 
+        const handleStyles = (style) => {
+            if (style.body)
+                document.querySelector("body").style = style.body;
+
+            if (style.p)
+                document.querySelectorAll("p").style = style.p
+        }
+
         (
             async () => {
-                window.history_ = await historyController.history_() || [];
+                const loadFile = await historyController.history_() || [];
+                window.history_ = loadFile.history;
+
+                handleStyles(loadFile.styles);
                 handleHistory("<%=page%>");
             }
         )();

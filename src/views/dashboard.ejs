@@ -9,40 +9,50 @@
     <link rel="stylesheet" href="/assets/styles.css" />
   </head>
   <body>
-    <a href="/auths/google/logout" class="back_home dashboard">
-      <img src="/assets/logout_.png" alt="">
-    </a>
     <section class="terminal"></section>
     <br>
     <div class="bash-command" style="flex-direction: column;"></div>
 
     <script src="/scripts/events.controller.js"></script>
 
-    <% historys.forEach((history) => { %>
-      <script>
-        (
-          async () => {
-            typingOptions_(
-              '<%=history.name%> <%=history.continue ? "(continue)" : ""%>',
-              () => {
-                window.location.href = "/pages/playground/<%=history.slug%>"
-              }
-            );
-          }
-        )();
-      </script>
-    <% }); %>
-
     <script>
       (
         async () => {
           await typing_(
-            'Choose Your Own Adventure',
+            "Book's Journey",
             true
           );
 
           await typing_(
-            `Ready for unforgettable adventures, <span><%= username %></span>? Choose your game to begin:`
+            `Ready for unforgettable adventures, <span><%= username %></span>? Choose your path to <span class="orange">begin:</span>`
+          );
+
+          typingOptions_(
+            "History's List /",
+            () => {
+              window.location.href = "/pages/dashboard/historys"
+            }
+          );
+
+          typingOptions_(
+            "History's Editor /",
+            () => {
+              window.location.href = "/pages/dashboard/editor"
+            }
+          );
+
+          typingOptions_(
+            "Docs History Editor /",
+            () => {
+              window.location.href = "/pages/dashboard/editor/docs"
+            }
+          );
+
+          typingOptions_(
+            "Exit /",
+            () => {
+              window.location.href = "/auths/google/logout"
+            }
           );
 
         }

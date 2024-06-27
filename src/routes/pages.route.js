@@ -9,16 +9,32 @@ router.get("/", (req, res, next) => {
     res.status(200).render('access')
 });
 
-router.get('/dashboard/user', (req, res, next) => {
+router.get('/dashboard/editor', (req, res, next) => {
     if (!req.isAuthenticated()) 
-        return res.status(200).redirect("/pages/dashboard");
+        return res.status(200).redirect("/pages");
 
     new User().get({ email_: req.user.email }).then(user => {
-        res.status(200).render('user', { username: user.username, email: user.email })
+        res.status(200).render('building/dashboard', { username: user.username, email: user.email })
     });
-})
+});
 
 router.get('/dashboard', (req, res, next) => {
+    if (!req.isAuthenticated()) 
+        return res.status(200).redirect("/pages");
+
+    new User().get({ email_: req.user.email }).then(user => {
+        res.status(200).render('dashboard', { username: user.username })
+    });
+});
+
+router.get('/dashboard/editor/docs', (req, res, next) => {
+    if (!req.isAuthenticated()) 
+        return res.status(200).redirect("/pages");
+
+    res.status(200).render('building/documents')
+});
+
+router.get('/dashboard/historys', (req, res, next) => {
     if (!req.isAuthenticated()) 
         return res.status(401).redirect('/pages');
 
@@ -39,7 +55,7 @@ router.get('/dashboard', (req, res, next) => {
                     historys_[index].continue = false;
             }
         
-            res.status(200).render('dashboard', { username: req.user.username, hasSaveGame: false, historys })
+            res.status(200).render('historys/dashboard', { username: req.user.username, hasSaveGame: false, historys })
         })
     })
 });
@@ -52,7 +68,7 @@ router.get('/playground/:history', (req, res, next) => {
         const user_progress = [ ...user.user_progress ].map(progress_ => JSON.parse(progress_));
         const progress_index = user_progress.findIndex(book => book.name === req.params.history);
 
-        res.status(200).render('playground', { 
+        res.status(200).render('historys/playground', { 
             username: req.user.username, 
             history: req.params.history,
             page: (progress_index !== -1) ? user_progress[progress_index].page : "1"

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@<%=username%> ~</title>
+    <link rel="icon" href="/assets/flask_big_blue.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <a href="/pages/dashboard" class="back_home">Back</a>
+    <section class="terminal"></section>
+    <br>
+    <div class="bash-command" style="flex-direction: column;"></div>
+
+    <script src="/scripts/events.controller.js"></script>
+
+    <% historys.forEach((history) => { %>
+      <script>
+        (
+          async () => {
+            typingOptions_(
+              '<%=history.name%> <%=history.continue ? "(continue)" : ""%>',
+              () => {
+                window.location.href = "/pages/playground/<%=history.slug%>"
+              }
+            );
+          }
+        )();
+      </script>
+    <% }); %>
+
+    <script>
+      (
+        async () => {
+          await typing_(
+            "Book's Journey",
+            true
+          );
+
+          await typing_(
+            `Hello, <span><%= username %></span>. Choose the book you want to read to <span class="orange">begin:</span>`
+          );
+
+        }
+      )();
+  </script>
+
+  </body>
+</html>
