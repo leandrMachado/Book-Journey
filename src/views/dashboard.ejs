@@ -27,6 +27,10 @@
             `Ready for unforgettable adventures, <span><%= username %></span>? Choose your path to <span class="orange">begin:</span>`
           );
 
+          await typing_(
+            `<span class="orange">Warning: </span>Soon we will add the possibility of creating your own stories.`
+          );
+
           typingOptions_(
             "History's List /",
             () => {
@@ -34,6 +38,7 @@
             }
           );
 
+          /*
           typingOptions_(
             "History's Editor /",
             () => {
@@ -46,7 +51,7 @@
             () => {
               window.location.href = "/pages/dashboard/editor/docs"
             }
-          );
+          );*/
 
           typingOptions_(
             "Exit /",
